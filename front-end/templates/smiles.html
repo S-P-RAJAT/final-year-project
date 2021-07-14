@@ -127,6 +127,7 @@
     <br/>
     <br/>
     <button id="bt1" type="submit">Submit</button>
+    <input type="button" id="bt1" onclick="clearForm()" value = "Clear" style="margin-left: 2rem;">
   <div id = "link"><a href="/">Please click here</a> to input the drug in form of drug name</div>
   </form>
   {%if method=="POST"%}
@@ -151,6 +152,13 @@
     {%endif%}
   {%endif%}
   <script>
+    function clearForm() {
+
+  const form = document.createElement('form');
+  form.method = 'get';
+  document.body.appendChild(form);
+  form.submit();
+}
   document.multiselect('#testSelect1')
     .setCheckBoxClick("checkboxAll", function(target, args) {
       console.log("Checkbox 'Select All' was clicked and got value ", args.checked);

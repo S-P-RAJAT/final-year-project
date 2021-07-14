@@ -112,11 +112,11 @@
 
   <h3> Please enter Drug Name and it's Target :</h3>
   <div class="free">
-  <form action="" method="post">
+  <form action="" method="post" id="myForm">
     <div>
       <span class="drug">
       Drug : &nbsp &nbsp</span> <select placeholder="Begin typing a name to filter..." id = "ip" name="drug">
-        <option value = "">Select a drug</option>
+        <option value = "" selected>Select a drug</option>
       {% for drugName in drugList["Name"]%}
         <option
         {%if drugName == drug%}
@@ -142,6 +142,7 @@
     <br/>
     <br/>
     <button id="bt1" type="submit">Submit</button>
+    <input type="button" id="bt1" onclick="clearForm()" value = "Clear" style="margin-left: 2rem;">
   <div id = "link"><a href="smiles">Please click here</a> to input the drug in form of SMILES</div>
   </form>
   {%if method=="POST"%}
@@ -165,6 +166,13 @@
         {%endif%}
   {%endif%}
   <script>
+    function clearForm() {
+    
+  const form = document.createElement('form');
+  form.method = 'get';
+  document.body.appendChild(form);
+  form.submit();
+}
   document.multiselect('#testSelect1')
     .setCheckBoxClick("checkboxAll", function(target, args) {
       console.log("Checkbox 'Select All' was clicked and got value ", args.checked);
